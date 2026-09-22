@@ -1,5 +1,6 @@
 import { prisma } from "@/lib/prisma";
 import EditPostForm from "./EditPostForm";
+import { notFound } from "next/navigation";
 
 type EditPostPageProps = {
   params: Promise<{
@@ -19,7 +20,7 @@ export default async function EditPostPage({
   });
 
   if (!post) {
-    return <h1>Blog post not found</h1>;
+    notFound();
   }
 
   return <EditPostForm post={post} />;
